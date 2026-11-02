@@ -76,8 +76,8 @@
                         <span><i class="fas fa-newspaper"></i> الراوية الرياضية</span>
                     </div>
                     <img class="image" src="${article.Image}" alt="${article.Title}" onerror="this.style.display='none'">
-                    <div class="content">${article.Content}</div>
-                    <a href="javascript:history.back()" class="back-btn">
+<div class="content">${article.Content || article.content || 'لا يوجد نص لهذا الخبر'}</div>
+<a href="javascript:history.back()" class="back-btn">
                         <i class="fas fa-arrow-right"></i> العودة للرئيسية
                     </a>
                 `;
