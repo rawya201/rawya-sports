@@ -41,7 +41,7 @@
     </div>
 
     <script>
-        // 👇 هنا ضعي الرابط الذي نسختيه من Apps Script 👇
+        // الرابط الذي نسختيه من Apps Script
         const API_URL = 'https://script.google.com/macros/s/AKfycbwhLkRKiKW9LntW2psnrdGbCPHeD_UxmVLPMNsCvAOtwJGwicoxnf_xNZvWOcUkNVa9/exec';
         
         const urlParams = new URLSearchParams(window.location.search);
@@ -60,7 +60,6 @@
                 
                 if (result.status !== 'success') throw new Error('فشل جلب البيانات');
                 
-                // البحث عن الخبر المطابق للرقم الموجود في الرابط
                 const article = result.data.find(n => n.ID == newsId);
                 
                 if (!article) {
@@ -68,7 +67,7 @@
                     return;
                 }
                 
-                // عرض الخبر (استخدمنا Title, Category, Date, Content بناءً على جدولك)
+                // ✅ تم تعديل article.image إلى article.Image
                 container.innerHTML = `
                     <span class="category-badge">${getCategoryName(article.Category)}</span>
                     <h1 class="title">${article.Title}</h1>
@@ -76,7 +75,7 @@
                         <span><i class="fas fa-calendar"></i> ${formatDate(article.Date)}</span>
                         <span><i class="fas fa-newspaper"></i> الراوية الرياضية</span>
                     </div>
-                    <img class="image" src="${article.image}" alt="${article.Title}" onerror="this.style.display='none'">
+                    <img class="image" src="${article.Image}" alt="${article.Title}" onerror="this.style.display='none'">
                     <div class="content">${article.Content}</div>
                     <a href="javascript:history.back()" class="back-btn">
                         <i class="fas fa-arrow-right"></i> العودة للرئيسية
